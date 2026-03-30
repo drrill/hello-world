@@ -52,11 +52,22 @@
 						</svg>
 					</button>
 					<?php
-					wp_nav_menu( array(
-						'theme_location' => 'primary',
-						'menu_id'        => 'primary-menu',
-						'fallback_cb'    => false,
-					) );
+					if ( has_nav_menu( 'primary' ) ) {
+						wp_nav_menu( array(
+							'theme_location' => 'primary',
+							'menu_id'        => 'primary-menu',
+							'fallback_cb'    => false,
+						) );
+					} else {
+						// Fallback navigation when no menu is assigned in WP admin.
+						?>
+						<ul id="primary-menu" class="menu">
+							<li><a href="<?php echo esc_url( home_url( '/type/aside/' ) ); ?>">Asides</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/archive/' ) ); ?>">Archive</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">About</a></li>
+						</ul>
+						<?php
+					}
 					?>
 				</nav>
 			</div>

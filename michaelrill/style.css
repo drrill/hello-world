@@ -436,12 +436,12 @@ a:focus-visible {
 }
 
 .entry-meta-column .entry-date {
-  color: var(--color-muted);
-  font-size: var(--font-size-small);
+  color: #999;
+  font-size: 0.8rem;
 }
 
 .entry-meta-column .entry-date a {
-  color: var(--color-muted);
+  color: #999;
   text-decoration: none;
 }
 
@@ -454,8 +454,13 @@ a:focus-visible {
   min-width: 0; /* prevent grid blowout */
 }
 
+/* Improved body text readability */
+.entry-content p {
+  line-height: 1.8;
+}
+
 .entry-content-column .entry-content {
-  line-height: 1.5;
+  line-height: 1.8;
 }
 
 .post-separator {
@@ -528,6 +533,7 @@ blockquote cite,
 .entry-content .wp-block-quote {
   position: relative;
   padding-left: 2.5rem;
+  font-size: 1.05rem;
   border-left: 3px solid var(--color-accent);
   color: #4a4a4a;
 }
@@ -566,6 +572,22 @@ blockquote cite,
 .format-aside .wp-block-quote p {
   font-size: 1.1rem !important;
   color: #404040;
+}
+
+/* Category page blockquote margin fixes */
+.category .entry-content blockquote,
+.category .entry-content .wp-block-quote {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.category-asides .format-aside blockquote,
+.category-asides .format-aside .wp-block-quote {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 2rem;
+  max-width: 100%;
 }
 
 /* ==========================================================================
@@ -617,9 +639,14 @@ blockquote cite,
 }
 
 .single-meta-column .entry-date {
-  color: var(--color-muted);
-  font-size: var(--font-size-small);
+  color: #999;
+  font-size: 0.8rem;
   margin-bottom: 1rem;
+}
+
+/* Constrain single post content width for readability */
+.single .entry-content {
+  max-width: 720px;
 }
 
 .single-meta-column .entry-date a {
@@ -968,6 +995,15 @@ figcaption {
   .post-entry,
   .single-post-entry {
     grid-template-columns: 1fr;
+  }
+
+  /* Block columns stack on mobile */
+  .wp-block-columns {
+    flex-direction: column;
+  }
+
+  .wp-block-column {
+    flex-basis: 100%;
   }
 
   .entry-meta-column {

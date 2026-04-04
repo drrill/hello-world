@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.0.6
+Version: 1.0.7
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -699,6 +699,31 @@ blockquote cite,
   line-height: 1.5;
 }
 
+/* About page: two-column layout matching posts */
+.about-entry {
+  max-width: var(--width-wide);
+  margin: 0 auto;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 20%) minmax(0, 1fr);
+  gap: 0 var(--spacing-50);
+}
+
+.about-label-column {
+  /* Left column: empty for now, can add label if desired */
+}
+
+.about-content-column {
+  min-width: 0;
+}
+
+.about-content-column .entry-content {
+  max-width: 720px;
+  line-height: 1.8;
+}
+
 /* ==========================================================================
    Archive / Search Headers
    ========================================================================== */
@@ -994,7 +1019,9 @@ figcaption {
 
 @media (max-width: 782px) {
   .post-entry,
-  .single-post-entry {
+  .single-post-entry,
+  .about-layout,
+  .timeline-layout {
     grid-template-columns: 1fr;
   }
 
@@ -1009,6 +1036,10 @@ figcaption {
 
   .entry-meta-column {
     margin-bottom: var(--spacing-20);
+  }
+
+  .timeline-heading-column {
+    margin-bottom: var(--spacing-50);
   }
 
   /* Hide empty aside meta column on mobile */
@@ -1102,6 +1133,7 @@ figcaption {
 
 .timeline-entries {
   /* right column — entries stack here */
+  max-width: 720px;
 }
 
 .timeline-entry {

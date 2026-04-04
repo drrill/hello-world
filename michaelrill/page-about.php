@@ -3,8 +3,8 @@
  * Template Name: About with Timeline
  *
  * Custom page template for the About page.
- * Shows the page content (editable in WP admin) followed by
- * a hardcoded career timeline.
+ * Uses the same two-column layout as the homepage/single posts:
+ * left column has a label/heading, right column has the main content.
  *
  * @package MichaelRill
  */
@@ -15,10 +15,17 @@ get_header();
 <main id="primary" class="site-main">
 
 	<?php while ( have_posts() ) : the_post(); ?>
-		<article id="post-<?php the_ID(); ?>" <?php post_class( 'page-entry' ); ?>>
-			<h1 class="entry-title"><?php the_title(); ?></h1>
-			<div class="entry-content">
-				<?php the_content(); ?>
+		<article id="post-<?php the_ID(); ?>" <?php post_class( 'about-entry' ); ?>>
+			<div class="about-layout">
+				<div class="about-label-column">
+					<!-- Left column: page title as label -->
+				</div>
+				<div class="about-content-column">
+					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<div class="entry-content">
+						<?php the_content(); ?>
+					</div>
+				</div>
 			</div>
 		</article>
 	<?php endwhile; ?>

@@ -18,6 +18,9 @@
 		<div class="entry-content">
 			<?php the_content(); ?>
 		</div>
+		<div class="aside-permalink">
+			<a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php echo esc_attr( get_the_date() ); ?>">&#x1f517;</a>
+		</div>
 	</div>
 
 </article>

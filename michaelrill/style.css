@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.1.7
+Version: 1.1.8
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -661,9 +661,9 @@ blockquote cite,
 
 .single-meta-column .entry-title {
   font-size: var(--font-size-xlarge);
-  padding-top: var(--spacing-20);
   padding-bottom: var(--spacing-20);
   margin-bottom: 0;
+  margin-top: 0;
 }
 
 .single-meta-column .entry-date {

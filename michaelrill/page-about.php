@@ -18,10 +18,9 @@ get_header();
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'about-entry' ); ?>>
 			<div class="about-layout">
 				<div class="about-label-column">
-					<!-- Left column: page title as label -->
+					<h1 class="entry-title"><?php the_title(); ?></h1>
 				</div>
 				<div class="about-content-column">
-					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<div class="entry-content">
 						<?php the_content(); ?>
 					</div>

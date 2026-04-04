@@ -15,6 +15,7 @@
 		<?php if ( 'aside' !== get_post_format() ) : ?>
 			<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 			<?php michaelrill_posted_on(); ?>
+			<?php michaelrill_reading_time(); ?>
 			<?php michaelrill_post_categories(); ?>
 			<?php michaelrill_post_tags(); ?>
 		<?php endif; ?>

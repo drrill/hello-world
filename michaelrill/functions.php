@@ -146,3 +146,99 @@ function michaelrill_post_tags() {
 		echo '<div class="entry-tags">' . $tags_list . '</div>';
 	}
 }
+
+/**
+ * Output estimated reading time for a post.
+ */
+function michaelrill_reading_time() {
+	$content    = get_post_field( 'post_content', get_the_ID() );
+	$word_count = str_word_count( wp_strip_all_tags( $content ) );
+	$minutes    = max( 1, round( $word_count / 250 ) );
+	echo '<div class="reading-time">' . esc_html( $minutes ) . ' min read</div>';
+}
+
+/**
+ * Output favicon using the custom logo.
+ */
+function michaelrill_favicon() {
+	$custom_logo_id = get_theme_mod( 'custom_logo' );
+	if ( $custom_logo_id ) {
+		$logo_url = wp_get_attachment_image_url( $custom_logo_id, array( 32, 32 ) );
+		if ( $logo_url ) {
+			echo '<link rel="icon" href="' . esc_url( $logo_url ) . '" sizes="32x32">' . "\n";
+			echo '<link rel="apple-touch-icon" href="' . esc_url( $logo_url ) . '">' . "\n";
+		}
+	}
+}
+add_action( 'wp_head', 'michaelrill_favicon' );
+
+/**
+ * Output Open Graph and Twitter meta tags.
+ */
+function michaelrill_og_meta() {
+	echo '<meta property="og:site_name" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
+	echo '<meta name="twitter:card" content="summary">' . "\n";
+
+	if ( is_singular() ) {
+		echo '<meta property="og:type" content="article">' . "\n";
+		echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">' . "\n";
+		echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">' . "\n";
+
+		$excerpt = get_the_excerpt();
+		if ( $excerpt ) {
+			echo '<meta property="og:description" content="' . esc_attr( wp_trim_words( $excerpt, 30 ) ) . '">' . "\n";
+			echo '<meta name="twitter:description" content="' . esc_attr( wp_trim_words( $excerpt, 30 ) ) . '">' . "\n";
+		}
+
+		if ( has_post_thumbnail() ) {
+			$thumb_url = get_the_post_thumbnail_url( null, 'large' );
+			echo '<meta property="og:image" content="' . esc_url( $thumb_url ) . '">' . "\n";
+			echo '<meta name="twitter:image" content="' . esc_url( $thumb_url ) . '">' . "\n";
+		}
+	} else {
+		echo '<meta property="og:type" content="website">' . "\n";
+		echo '<meta property="og:title" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . "\n";
+		echo '<meta property="og:url" content="' . esc_url( home_url( '/' ) ) . '">' . "\n";
+
+		$description = get_bloginfo( 'description' );
+		if ( $description ) {
+			echo '<meta property="og:description" content="' . esc_attr( $description ) . '">' . "\n";
+		}
+	}
+}
+add_action( 'wp_head', 'michaelrill_og_meta' );
+
+/**
+ * Handle contact form submission.
+ */
+function michaelrill_handle_contact_form() {
+	if ( ! isset( $_POST['michaelrill_contact_nonce'] ) || ! wp_verify_nonce( $_POST['michaelrill_contact_nonce'], 'michaelrill_contact' ) ) {
+		return;
+	}
+
+	$name    = sanitize_text_field( $_POST['contact_name'] ?? '' );
+	$email   = sanitize_email( $_POST['contact_email'] ?? '' );
+	$message = sanitize_textarea_field( $_POST['contact_message'] ?? '' );
+
+	if ( empty( $name ) || empty( $email ) || empty( $message ) ) {
+		set_transient( 'michaelrill_contact_error', 'Please fill in all fields.', 30 );
+		return;
+	}
+
+	if ( ! is_email( $email ) ) {
+		set_transient( 'michaelrill_contact_error', 'Please enter a valid email address.', 30 );
+		return;
+	}
+
+	$to      = get_option( 'admin_email' );
+	$subject = sprintf( 'Contact form: %s', $name );
+	$body    = sprintf( "Name: %s\nEmail: %s\n\n%s", $name, $email, $message );
+	$headers = array( 'Reply-To: ' . $name . ' <' . $email . '>' );
+
+	if ( wp_mail( $to, $subject, $body, $headers ) ) {
+		set_transient( 'michaelrill_contact_success', 'Thank you! Your message has been sent.', 30 );
+	} else {
+		set_transient( 'michaelrill_contact_error', 'Sorry, something went wrong. Please try again.', 30 );
+	}
+}
+add_action( 'template_redirect', 'michaelrill_handle_contact_form' );

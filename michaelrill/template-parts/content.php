@@ -15,6 +15,7 @@
 			<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 		</h2>
 		<?php michaelrill_posted_on(); ?>
+		<?php michaelrill_reading_time(); ?>
 	</div>
 
 	<div class="entry-content-column">

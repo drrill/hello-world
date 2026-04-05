@@ -45,10 +45,6 @@
 			</div>
 
 			<div class="header-right">
-				<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-					<span class="icon-moon">&#9790;</span>
-					<span class="icon-sun">&#9728;</span>
-				</button>
 				<?php get_search_form(); ?>
 
 				<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'michaelrill' ); ?>">
@@ -78,6 +74,10 @@
 					}
 					?>
 				</nav>
+				<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+					<span class="icon-moon">&#9790;</span>
+					<span class="icon-sun">&#9728;</span>
+				</button>
 			</div>
 
 		</div>

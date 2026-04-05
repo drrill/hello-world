@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.4.9
+Version: 1.5.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -1172,23 +1172,25 @@ sup.footnote {
 
 .bigfoot-footnote__button {
   font-family: var(--font-primary);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-bg);
-  background: var(--color-accent);
+  font-size: 0.65em;
+  font-weight: 700;
+  color: var(--color-accent);
+  background: none;
   border: none;
-  border-radius: 1em;
-  padding: 0.1em 0.55em;
+  border-bottom: 1px solid var(--color-accent);
+  padding: 0 0.15em;
   cursor: pointer;
-  line-height: 1.4;
+  line-height: 1;
   position: relative;
-  top: -0.15em;
-  transition: background 0.2s;
+  top: -0.4em;
+  transition: all 0.2s;
 }
 
 .bigfoot-footnote__button:hover,
 .bigfoot-footnote__button.is-active {
+  color: var(--color-bg);
   background: var(--color-accent-hover);
+  border-bottom-color: transparent;
 }
 
 /* Popover */

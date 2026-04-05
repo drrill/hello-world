@@ -76,7 +76,7 @@
 				</nav>
 				<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
 					<span class="icon-moon">&#9790;</span>
-					<span class="icon-sun">&#9728;</span>
+					<span class="icon-sun">&#9788;</span>
 				</button>
 			</div>
 

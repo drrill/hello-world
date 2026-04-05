@@ -11,6 +11,12 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-entry' ); ?>>
 
+	<?php if ( has_post_thumbnail() && 'aside' !== get_post_format() ) : ?>
+		<div class="single-featured-image">
+			<?php the_post_thumbnail( 'large' ); ?>
+		</div>
+	<?php endif; ?>
+
 	<div class="single-meta-column">
 		<?php if ( 'aside' !== get_post_format() ) : ?>
 			<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>

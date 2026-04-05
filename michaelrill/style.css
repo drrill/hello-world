@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.4.8
+Version: 1.4.9
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -1157,6 +1157,89 @@ blockquote cite,
 
 .footer-rss svg {
   opacity: 0.7;
+}
+
+/* ==========================================================================
+   Footnotes (WP-Bigfoot)
+   ========================================================================== */
+
+/* Superscript number in text */
+sup.footnote {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
+}
+
+.bigfoot-footnote__button {
+  font-family: var(--font-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-bg);
+  background: var(--color-accent);
+  border: none;
+  border-radius: 1em;
+  padding: 0.1em 0.55em;
+  cursor: pointer;
+  line-height: 1.4;
+  position: relative;
+  top: -0.15em;
+  transition: background 0.2s;
+}
+
+.bigfoot-footnote__button:hover,
+.bigfoot-footnote__button.is-active {
+  background: var(--color-accent-hover);
+}
+
+/* Popover */
+.bigfoot-footnote__container {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-medium);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  max-width: 500px;
+  z-index: 100;
+}
+
+[data-theme="dark"] .bigfoot-footnote__container {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.bigfoot-footnote__content {
+  padding: 1rem 1.25rem;
+  max-height: 15em;
+  overflow: auto;
+}
+
+.bigfoot-footnote__content p {
+  margin: 0 0 0.5em;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.bigfoot-footnote__content p:last-child {
+  margin-bottom: 0;
+}
+
+.bigfoot-footnote__content a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.bigfoot-footnote__content a:hover {
+  color: var(--color-bg);
+  background: var(--color-accent-hover);
+  border-bottom-color: transparent;
+}
+
+/* Popover arrow */
+.bigfoot-footnote__tooltip {
+  border-color: var(--color-border);
 }
 
 /* ==========================================================================

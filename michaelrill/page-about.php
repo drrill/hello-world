@@ -48,28 +48,28 @@ get_header();
 				<h3 class="timeline-entry-title">Microsoft</h3>
 			</div>
 			<div class="timeline-content-column">
-				<p>I joined Microsoft to work on incubation efforts within Microsoft Teams, exploring new product directions and driving cross-functional strategy during an early chapter of what became one of Microsoft&rsquo;s most strategically important products.</p>
-				<p>From there I moved into strategy and planning for Microsoft Office, leading product direction for initiatives including Insights and Icebreakers &mdash; establishing go-to-market direction, working with Objectives and Key Results across the organization, and helping set the long-term course for one of Microsoft&rsquo;s most used product families.</p>
-				<p>Today I manage the TPM work within the Office AI team, driving strategic initiatives to enhance AI capabilities across Office applications. My role involves orchestrating cross-functional teams, aligning product roadmaps with business goals, and making sure the engineering and strategy sides of the organization are moving in the same direction.</p>
+				<p>I joined Microsoft first as part of the Corporate Strategy team, working on growth strategies such as industry verticals, voice and video communications in Teams, Azure Communication Services and Azure Confidential Compute. After that I worked on incubation efforts within Microsoft Teams, exploring new product directions and driving cross-functional strategy during an early chapter of what became one of Microsoft&rsquo;s most strategically important products.</p>
+				<p>From there I moved into strategy and planning for Microsoft Office, leading product direction for initiatives, working with Objectives and Key Results across the organization, and helping set the long-term course for one of Microsoft&rsquo;s most used product families.</p>
+				<p>Today I lead Technical Program Management within the Office AI team, driving strategic initiatives to enhance AI capabilities across Office applications. Some of my areas include establishing an Office-wide Eval System and managing our fleet of GPUs to support the roll out of critical Copilot features in Office. My role involves orchestrating cross-functional teams, aligning product roadmaps with business goals, and making sure the engineering and strategy sides of the organization are moving in the same direction.</p>
 			</div>
 		</div>
 
 		<!-- Telstra -->
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<span class="timeline-date">2012 – 2017</span>
+				<span class="timeline-date">2013 – 2017</span>
 				<h3 class="timeline-entry-title">Telstra</h3>
 			</div>
 			<div class="timeline-content-column">
-				<p>I started at Telstra working for the CFO, developing strategic capabilities at the corporate level &mdash; complex strategic issues, talent management, and connecting financial strategy to business direction. It was my first real taste of how a large enterprise thinks about its own future.</p>
-				<p>That led to running strategy and program management for Telstra&rsquo;s Software Group, where I was responsible for the strategic direction and development of a portfolio of products. It was the step that moved me from advising on strategy to owning the execution of it.</p>
+				<p>I started at Telstra working for the CFO as part of the Corporate Strategy team. I developed strategic initiatives at the corporate level, complex strategic issues, talent management, and connecting financial strategy to business direction. It was my first real taste of how a large enterprise thinks about its own future.</p>
+				<p>That led to running strategy and program management for Telstra&rsquo;s Software Group, where I was responsible for the strategic direction and development of a portfolio of products. I drove the strategy and integration of a number of software acquisitions in the Bay Area, Europe and Asia. It was the step that moved me from advising on strategy to owning the execution of it.</p>
 			</div>
 		</div>
 
 		<!-- Bain & Company -->
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<span class="timeline-date">~2008 – 2012</span>
+				<span class="timeline-date">2007 – 2012</span>
 				<h3 class="timeline-entry-title">Bain &amp; Company</h3>
 			</div>
 			<div class="timeline-content-column">
@@ -80,7 +80,7 @@ get_header();
 		<!-- University of Regensburg -->
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<span class="timeline-date">~2005 – 2008</span>
+				<span class="timeline-date">– 2006</span>
 				<h3 class="timeline-entry-title">University of Regensburg</h3>
 			</div>
 			<div class="timeline-content-column">

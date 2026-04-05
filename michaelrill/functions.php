@@ -216,6 +216,17 @@ function michaelrill_handle_contact_form() {
 		return;
 	}
 
+	// Honeypot: bots fill this hidden field, humans don't.
+	if ( ! empty( $_POST['company'] ) ) {
+		wp_die( 'Invalid submission.', 'Spam detected', array( 'response' => 403 ) );
+	}
+
+	// Time-based check: reject submissions faster than 3 seconds.
+	$loaded_at = intval( $_POST['form_loaded_at'] ?? 0 );
+	if ( time() - $loaded_at < 3 ) {
+		wp_die( 'Invalid submission.', 'Spam detected', array( 'response' => 403 ) );
+	}
+
 	$name    = sanitize_text_field( $_POST['contact_name'] ?? '' );
 	$email   = sanitize_email( $_POST['contact_email'] ?? '' );
 	$message = sanitize_textarea_field( $_POST['contact_message'] ?? '' );

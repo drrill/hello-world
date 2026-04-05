@@ -50,6 +50,8 @@ if ( $error ) {
 				<?php if ( ! $success ) : ?>
 					<form method="post" class="contact-form">
 						<?php wp_nonce_field( 'michaelrill_contact', 'michaelrill_contact_nonce' ); ?>
+						<input type="hidden" name="form_loaded_at" value="<?php echo esc_attr( time() ); ?>">
+						<input type="text" name="company" tabindex="-1" autocomplete="off" style="display:none">
 
 						<div class="form-field">
 							<label for="contact_name">Name</label>

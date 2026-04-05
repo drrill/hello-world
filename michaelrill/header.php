@@ -65,6 +65,7 @@
 							<li><a href="<?php echo esc_url( home_url( '/type/aside/' ) ); ?>">Asides</a></li>
 							<li><a href="<?php echo esc_url( home_url( '/archive/' ) ); ?>">Archive</a></li>
 							<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">About</a></li>
+							<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact</a></li>
 						</ul>
 						<?php
 					}

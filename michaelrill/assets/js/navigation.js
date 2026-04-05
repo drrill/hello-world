@@ -35,6 +35,56 @@
 	} );
 } )();
 
+/* Dark mode: auto (time-based), manual toggle, localStorage persistence */
+( function() {
+	var root = document.documentElement;
+	var STORAGE_KEY = 'michaelrill-theme';
+
+	function isDaytime() {
+		var h = new Date().getHours();
+		return h >= 7 && h < 20;
+	}
+
+	function getAutoTheme() {
+		if ( window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ) {
+			return 'dark';
+		}
+		return isDaytime() ? 'light' : 'dark';
+	}
+
+	function applyTheme( theme ) {
+		root.setAttribute( 'data-theme', theme );
+	}
+
+	// On load: check stored preference, otherwise auto-detect.
+	var stored = localStorage.getItem( STORAGE_KEY );
+	if ( stored ) {
+		applyTheme( stored );
+	} else {
+		applyTheme( getAutoTheme() );
+	}
+
+	// Toggle button.
+	var btn = document.querySelector( '.theme-toggle' );
+	if ( btn ) {
+		btn.addEventListener( 'click', function() {
+			var current = root.getAttribute( 'data-theme' ) || 'light';
+			var next = current === 'dark' ? 'light' : 'dark';
+			applyTheme( next );
+			localStorage.setItem( STORAGE_KEY, next );
+		} );
+	}
+
+	// Respect OS-level preference changes.
+	if ( window.matchMedia ) {
+		window.matchMedia('(prefers-color-scheme: dark)').addEventListener( 'change', function( e ) {
+			if ( ! localStorage.getItem( STORAGE_KEY ) ) {
+				applyTheme( e.matches ? 'dark' : 'light' );
+			}
+		} );
+	}
+} )();
+
 /* Konami code Easter egg: ↑↑↓↓←→←→BA */
 ( function() {
 	var seq = [38,38,40,40,37,39,37,39,66,65], pos = 0;

@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.3.6
+Version: 1.4.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -28,6 +28,14 @@ Text Domain: michaelrill
   --color-post-border: #e5e5e5;
   --color-aside-text: #5a5a5a;
   --color-aside-quote-border: #a3a3a3;
+  --color-input-bg: #fff;
+  --color-date: #999;
+  --color-blockquote-text: #404040;
+  --color-success-bg: #e8f5e9;
+  --color-success-text: #2e7d32;
+  --color-error-bg: #fce4ec;
+  --color-error-text: #c62828;
+  --color-button-text: #fff;
 
   --font-primary: 'Manrope', sans-serif;
   --font-mono: 'Fira Code', monospace;
@@ -46,6 +54,29 @@ Text Domain: michaelrill
   --spacing-40: 30px;
   --spacing-50: clamp(30px, 5vw, 50px);
   --spacing-60: clamp(30px, 7vw, 70px);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-bg: #1a1a2e;
+  --color-text: #c8c8d0;
+  --color-heading: #e8e8ec;
+  --color-muted: #8888a0;
+  --color-border: #2a2a40;
+  --color-border-subtle: #ffffff22;
+  --color-accent: #f06292;
+  --color-accent-hover: #f48fb1;
+  --color-post-border: #2a2a40;
+  --color-aside-text: #9898a8;
+  --color-aside-quote-border: #555570;
+  --color-input-bg: #222238;
+  --color-date: #7878a0;
+  --color-blockquote-text: #b0b0c0;
+  --color-success-bg: #1b3a2a;
+  --color-success-text: #66bb6a;
+  --color-error-bg: #3a1a2a;
+  --color-error-text: #ef9a9a;
+  --color-button-text: #1a1a2e;
 }
 
 /* ==========================================================================
@@ -367,6 +398,36 @@ a:focus-visible {
   fill: currentColor;
 }
 
+/* Dark mode toggle */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25em;
+  line-height: 0;
+  color: var(--color-muted);
+  transition: color 0.2s;
+  font-size: 1.15rem;
+}
+
+.theme-toggle:hover {
+  color: var(--color-accent);
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .icon-sun {
+  display: inline;
+}
+
+[data-theme="light"] .theme-toggle .icon-moon,
+:root:not([data-theme="dark"]) .theme-toggle .icon-moon {
+  display: inline;
+}
+
 /* ==========================================================================
    Search Form
    ========================================================================== */
@@ -446,7 +507,7 @@ a:focus-visible {
 }
 
 .entry-meta-column .entry-date {
-  color: #999;
+  color: var(--color-date);
   font-size: 0.8rem;
 }
 
@@ -457,7 +518,7 @@ a:focus-visible {
 }
 
 .entry-meta-column .entry-date a {
-  color: #999;
+  color: var(--color-date);
   text-decoration: none;
 }
 
@@ -593,7 +654,7 @@ blockquote cite,
   padding: 1.25rem 2rem !important;
   margin: 1.5rem 0 !important;
   font-style: italic;
-  color: #404040;
+  color: var(--color-blockquote-text);
   font-size: 1.1rem !important;
 }
 
@@ -605,7 +666,7 @@ blockquote cite,
 .format-aside blockquote p,
 .format-aside .wp-block-quote p {
   font-size: 1.1rem !important;
-  color: #404040;
+  color: var(--color-blockquote-text);
 }
 
 /* Category page blockquote margin fixes */
@@ -673,7 +734,7 @@ blockquote cite,
 }
 
 .single-meta-column .entry-date {
-  color: #999;
+  color: var(--color-date);
   font-size: 0.8rem;
 }
 
@@ -1077,7 +1138,7 @@ blockquote cite,
   padding: 0.5rem 0.75rem;
   border: 1px solid var(--color-border-subtle);
   border-radius: 4px;
-  background: #fff;
+  background: var(--color-input-bg);
   color: var(--color-text);
   transition: border-color 0.2s;
 }
@@ -1098,7 +1159,7 @@ blockquote cite,
   font-weight: 500;
   padding: 0.6rem 1.5rem;
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-button-text);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -1116,13 +1177,13 @@ blockquote cite,
 }
 
 .contact-success {
-  background: #e8f5e9;
-  color: #2e7d32;
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
 }
 
 .contact-error {
-  background: #fce4ec;
-  color: #c62828;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
 }
 
 .contact-message p {

@@ -11,6 +11,9 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<?php wp_head(); ?>
+	<script>
+	(function(){var t=localStorage.getItem('michaelrill-theme');if(!t){var h=new Date().getHours();t=(window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches)?'dark':(h>=7&&h<20?'light':'dark')}document.documentElement.setAttribute('data-theme',t)})();
+	</script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -42,6 +45,10 @@
 			</div>
 
 			<div class="header-right">
+				<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+					<span class="icon-moon">&#9790;</span>
+					<span class="icon-sun">&#9728;</span>
+				</button>
 				<?php get_search_form(); ?>
 
 				<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'michaelrill' ); ?>">

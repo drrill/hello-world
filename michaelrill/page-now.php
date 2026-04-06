@@ -22,9 +22,9 @@ get_header();
 			<div class="about-layout">
 				<div class="about-label-column">
 					<h1 class="entry-title"><?php the_title(); ?></h1>
+					<p class="now-updated">// last updated: April &rsquo;26</p>
 				</div>
 				<div class="about-content-column">
-					<p class="now-updated">Last updated: April 2026</p>
 					<?php if ( get_the_content() ) : ?>
 						<div class="entry-content">
 							<?php the_content(); ?>

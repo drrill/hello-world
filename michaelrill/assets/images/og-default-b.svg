@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#eeeff0"/>
+
+  <!-- Large monogram -->
+  <text x="340" y="380" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="200" font-weight="800" fill="#e91e63" opacity="0.15">MR</text>
+  <text x="340" y="380" text-anchor="middle" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="200" font-weight="800" fill="none" stroke="#e91e63" stroke-width="2">MR</text>
+
+  <!-- Vertical divider -->
+  <rect x="560" y="215" width="2" height="200" fill="#DBDBDB"/>
+
+  <!-- Name and URL on right -->
+  <text x="620" y="295" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="48" font-weight="700" fill="#191919">Michael Rill</text>
+  <text x="620" y="345" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="400" fill="#5F5F5F">michaelrill.xyz</text>
+
+  <!-- Subtle pink dot -->
+  <circle cx="620" cy="385" r="4" fill="#e91e63"/>
+</svg>

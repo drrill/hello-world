@@ -39,7 +39,7 @@ get_header();
 
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<h3 class="timeline-entry-title">Working on</h3>
+				<span class="timeline-date">Working on</span>
 			</div>
 			<div class="timeline-content-column">
 				<p>Leading Technical Program Management within the Office AI team at Microsoft. Currently focused on building an Office-wide Eval System and managing our fleet of GPUs for Copilot feature rollouts.</p>
@@ -48,7 +48,7 @@ get_header();
 
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<h3 class="timeline-entry-title">Reading</h3>
+				<span class="timeline-date">Reading</span>
 			</div>
 			<div class="timeline-content-column">
 				<p>Too many RSS feeds in Feedly. I pay for it and I intend to get my money&rsquo;s worth.</p>
@@ -57,7 +57,7 @@ get_header();
 
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<h3 class="timeline-entry-title">Thinking about</h3>
+				<span class="timeline-date">Thinking about</span>
 			</div>
 			<div class="timeline-content-column">
 				<p>Whether short-form writing counts as writing or just as thinking out loud. How to write more regularly. The value of flossing.</p>
@@ -66,7 +66,7 @@ get_header();
 
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<h3 class="timeline-entry-title">Tinkering with</h3>
+				<span class="timeline-date">Tinkering with</span>
 			</div>
 			<div class="timeline-content-column">
 				<p>This website. Built as a classic WordPress theme with help from Claude. Self-hosted fonts, dark mode, and an Easter egg you probably won&rsquo;t find.</p>
@@ -75,7 +75,7 @@ get_header();
 
 		<div class="timeline-layout timeline-group">
 			<div class="timeline-meta-column">
-				<h3 class="timeline-entry-title">Based in</h3>
+				<span class="timeline-date">Based in</span>
 			</div>
 			<div class="timeline-content-column">
 				<p>Seattle area.</p>

@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#1a1a2e"/>
+  <rect width="1200" height="630" fill="#eeeff0"/>
 
   <!-- Subtle decorative circles -->
-  <circle cx="950" cy="120" r="180" fill="none" stroke="#f06292" stroke-width="1" opacity="0.12"/>
-  <circle cx="980" cy="100" r="120" fill="none" stroke="#f06292" stroke-width="1" opacity="0.08"/>
-  <circle cx="200" cy="530" r="140" fill="none" stroke="#f06292" stroke-width="1" opacity="0.1"/>
+  <circle cx="950" cy="120" r="180" fill="none" stroke="#e91e63" stroke-width="1" opacity="0.1"/>
+  <circle cx="980" cy="100" r="120" fill="none" stroke="#e91e63" stroke-width="1" opacity="0.07"/>
+  <circle cx="200" cy="530" r="140" fill="none" stroke="#e91e63" stroke-width="1" opacity="0.08"/>
 
   <!-- Pink accent line on left -->
-  <rect x="100" y="230" width="4" height="170" rx="2" fill="#f06292"/>
+  <rect x="100" y="230" width="4" height="170" rx="2" fill="#e91e63"/>
 
   <!-- Name -->
-  <text x="140" y="295" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="800" fill="#e8e8ec" letter-spacing="-1">Michael Rill</text>
+  <text x="140" y="295" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="800" fill="#191919" letter-spacing="-1">Michael Rill</text>
 
   <!-- URL -->
-  <text x="140" y="345" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#8888a0">michaelrill.xyz</text>
+  <text x="140" y="345" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#5F5F5F">michaelrill.xyz</text>
 
-  <!-- Tagline or descriptor -->
-  <text x="140" y="385" font-family="'Fira Code', monospace" font-size="16" fill="#f06292" opacity="0.7">// thoughts &amp; tinkering</text>
+  <!-- Tagline -->
+  <text x="140" y="385" font-family="'Fira Code', monospace" font-size="16" fill="#e91e63" opacity="0.7">// Einfach machen</text>
 </svg>

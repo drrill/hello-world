@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.5.1
+Version: 1.5.2
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -1172,6 +1172,8 @@ sup.footnote {
 
 .bigfoot-footnote__container {
   display: inline;
+  text-decoration: none;
+  border: none;
 }
 
 .bigfoot-footnote__button {
@@ -1183,8 +1185,10 @@ sup.footnote {
   cursor: pointer;
   position: relative;
   top: -0.5em;
-  padding: 0 0.1em;
-  border-bottom: 1px solid var(--color-accent);
+  padding: 0 0.15em;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
   transition: all 0.2s;
 }
 
@@ -1192,7 +1196,6 @@ sup.footnote {
 .bigfoot-footnote__button.is-active {
   color: var(--color-bg);
   background: var(--color-accent-hover);
-  border-bottom-color: transparent;
 }
 
 /* Hide Bigfoot's default SVG dots */
@@ -1207,7 +1210,8 @@ sup.footnote {
 }
 
 /* Popover */
-.bigfoot-footnote__container {
+.bigfoot-footnote.is-active .bigfoot-footnote__container {
+  display: block;
   font-family: var(--font-primary);
   font-size: var(--font-size-medium);
   line-height: 1.6;
@@ -1215,13 +1219,14 @@ sup.footnote {
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
-  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  max-width: 620px;
+  min-width: 320px;
   z-index: 100;
 }
 
-[data-theme="dark"] .bigfoot-footnote__container {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+[data-theme="dark"] .bigfoot-footnote.is-active .bigfoot-footnote__container {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
 .bigfoot-footnote__content {

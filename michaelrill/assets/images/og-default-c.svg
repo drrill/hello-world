@@ -6,19 +6,19 @@
   <circle cx="980" cy="100" r="120" fill="none" stroke="#e91e63" stroke-width="1" opacity="0.07"/>
   <circle cx="200" cy="530" r="140" fill="none" stroke="#e91e63" stroke-width="1" opacity="0.08"/>
 
-  <!-- Pink accent line on left -->
-  <rect x="100" y="175" width="4" height="240" rx="2" fill="#e91e63"/>
-
   <!-- Logo: dark circle with "mr" monogram -->
-  <circle cx="176" cy="220" r="36" fill="#3B3B3B"/>
-  <text x="176" y="233" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="400" font-style="italic" fill="#ffffff">mr</text>
+  <circle cx="310" cy="315" r="60" fill="#3B3B3B"/>
+  <text x="310" y="337" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="60" font-weight="400" font-style="italic" fill="#ffffff">mr</text>
+
+  <!-- Pink vertical divider -->
+  <rect x="405" y="230" width="4" height="170" rx="2" fill="#e91e63"/>
 
   <!-- Name -->
-  <text x="140" y="325" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="800" fill="#191919" letter-spacing="-1">Michael Rill</text>
+  <text x="440" y="290" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="68" font-weight="800" fill="#191919" letter-spacing="-1">Michael Rill</text>
 
   <!-- URL -->
-  <text x="140" y="375" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#5F5F5F">michaelrill.xyz</text>
+  <text x="440" y="340" font-family="'Manrope', 'Helvetica Neue', Arial, sans-serif" font-size="24" font-weight="400" fill="#5F5F5F">michaelrill.xyz</text>
 
   <!-- Tagline -->
-  <text x="140" y="415" font-family="'Fira Code', monospace" font-size="16" fill="#e91e63" opacity="0.7">// Einfach machen</text>
+  <text x="440" y="385" font-family="'Fira Code', monospace" font-size="16" fill="#e91e63" opacity="0.7">// Einfach machen</text>
 </svg>

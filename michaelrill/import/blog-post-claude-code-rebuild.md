@@ -6,13 +6,17 @@ The short answer: further than I expected.
 
 ## Why rebuild at all
 
-The old site did its job, but it didn't feel like mine. It was a theme I'd tweaked until the tweaks were fighting each other, and the result was something that worked but had no point of view. I wanted a classic WordPress theme — no block editor dependencies, no plugin soup — that reflected how I actually think about design: clean, typographic, and opinionated about the things that matter.
+Back in 2005, I came across Eric Meyer's website and fell in love with the layout: metadata in a narrow left column, main content on the right. Simple, typographic, structured. He's since moved on to different designs, but that two-column idea never left my head.
 
-I also wanted to learn something in the process. I've been around code long enough to know what I want but not always how to get there in CSS. Claude Code changed that equation.
+I've tried to recreate it more times than I'd like to admit. Existing WordPress themes. Tweaking those themes. Building from scratch in the block editor. You name it, I've tried it. But I never fully dug into the details of CSS or the intricacies of the WordPress block editor, and every attempt fell short. They always looked half-baked — lots of big and little kinks in the design that never quite aligned. Over the years I learned to live with it.
+
+Then I read [Miriam Schwab's piece on how she built her new website using Claude Code](https://miriamschwab.me/building-my-wordpress-site-with-claude-ai/). I was fascinated. I'd been around code long enough to know what I wanted but not always how to get there, and here was someone who'd used AI to close exactly that gap. I gave it a try over the Easter weekend.
 
 ## How the process worked
 
-I didn't hand over a spec and wait. This was a conversation — iterative, sometimes messy, always moving forward. I'd describe what I wanted, Claude would build it, I'd look at the result and say "the labels are too low" or "the sun icon looks weird in Safari," and we'd go back and forth until it was right.
+So while the sun was shining outside, I sat down for what turned into an intense conversation with Claude about how I wanted the website to look and work. Claude's token limits meant I had to take frequent breaks — even with the smaller Haiku models I'd burn through my allocation quickly. But after a few hours we'd both be back at it, and within a day I had a 95% version up and running.
+
+I didn't hand over a spec and wait. This was iterative, sometimes messy, always moving forward. I'd describe what I wanted, Claude would build it, I'd look at the result and say "the labels are too low" or "the sun icon looks weird in Safari," and we'd go back and forth until it was right.
 
 Some sessions were focused: implement dark mode. Others were exploratory: "do you have ideas for how to improve the site?" Claude would suggest a handful of things — a 404 page with personality, reading time estimates, a Now page — and I'd pick the ones that resonated.
 
@@ -20,15 +24,19 @@ The back-and-forth felt more like working with a sharp junior developer who happ
 
 ## What we built
 
-The theme is a classic WordPress theme built on a two-column grid: 20% left column for metadata, 80% right for content. That layout is the backbone — it runs through blog posts, pages, the About timeline, the Now page, everything.
+The theme is a classic WordPress theme built on that two-column grid I'd been chasing since 2005: 20% left column for metadata, 80% right for content. That layout is the backbone — it runs through blog posts, pages, the About timeline, the Now page, everything. Eric Meyer's influence, twenty years later.
 
 **Typography and design tokens.** Manrope as the primary font, Fira Code for monospace, both self-hosted as variable fonts. Every color, spacing value, and font size lives in CSS custom properties, which made dark mode possible without rewriting half the stylesheet.
 
 **Dark mode** was one of the bigger lifts. It detects your OS preference, falls back to time-based switching (dark after 8pm, light after 7am), and lets you override with a toggle. There's an inline script in the `<head>` that sets the theme before the page renders, so you never get a flash of the wrong mode. The toggle itself went through a few iterations — I started with text glyphs for the sun and moon icons, but they rendered differently across browsers. We ended up with inline SVGs for consistency.
 
-**The About page** uses a timeline layout for my career history, and the **Now page** uses the same two-column structure for what I'm currently up to. Both started as hardcoded PHP — which obviously defeats the purpose of having a CMS — and were later refactored into custom post types with WordPress XML import files for the initial content. That XML approach was one of my favorite parts of the process: Claude generated pre-populated import files that I could load directly via Tools → Import → WordPress. Fully populated site in seconds.
+**The About page** uses a timeline layout for my career history — each entry has a date range and company name in the left column and the description on the right. The **Now page** applies the same structure to what I'm currently working on, reading, thinking about. Both are backed by custom post types, so I can edit everything from the WordPress admin without touching a template file.
 
-**Asides** are my version of link posts: short-form notes with a different visual treatment on the homepage but styled like regular posts when you click through. The contact form uses honeypot and time-based spam protection instead of a CAPTCHA plugin. The 404 page has some personality. There's an Easter egg you probably won't find.
+That wasn't the case initially. Claude's first version hardcoded all the content directly in the PHP templates, which is fine for a prototype but defeats the purpose of having a CMS. When I flagged it, Claude refactored both pages into custom post types — Timeline Entries and Now Items — with meta boxes for date ranges and sort order. Then it generated WordPress XML import files pre-populated with all the existing content. I imported them via Tools → Import → WordPress and had a fully editable site in seconds. That XML approach was one of my favorite parts of the entire process.
+
+**The contact form** was another case where Claude came up with an elegant solution. Instead of adding a CAPTCHA plugin or depending on an external service, we built spam protection directly into the theme: a honeypot field that bots fill in but humans never see, combined with a time-based check that rejects submissions faster than three seconds. Simple, no dependencies, and it works.
+
+**Asides** are my version of link posts: short-form notes with a different visual treatment on the homepage but styled like regular posts when you click through. The 404 page has some personality. There's an Easter egg you probably won't find.
 
 **Open Graph meta tags, a favicon derived from the custom logo, RSS with an SVG icon in the footer, reading time estimates, featured images as full-width heroes on single posts** — the kind of details that individually are small but collectively make a site feel considered.
 

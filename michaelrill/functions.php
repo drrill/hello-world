@@ -253,3 +253,149 @@ function michaelrill_handle_contact_form() {
 	}
 }
 add_action( 'template_redirect', 'michaelrill_handle_contact_form' );
+
+/**
+ * Register Timeline Entry custom post type.
+ */
+function michaelrill_register_timeline_cpt() {
+	register_post_type( 'timeline_entry', array(
+		'labels' => array(
+			'name'               => 'Timeline Entries',
+			'singular_name'      => 'Timeline Entry',
+			'add_new'            => 'Add New Entry',
+			'add_new_item'       => 'Add New Timeline Entry',
+			'edit_item'          => 'Edit Timeline Entry',
+			'new_item'           => 'New Timeline Entry',
+			'view_item'          => 'View Timeline Entry',
+			'search_items'       => 'Search Timeline Entries',
+			'not_found'          => 'No timeline entries found',
+			'not_found_in_trash' => 'No timeline entries found in trash',
+		),
+		'public'       => false,
+		'show_ui'      => true,
+		'show_in_menu' => true,
+		'menu_icon'    => 'dashicons-timeline',
+		'supports'     => array( 'title', 'editor' ),
+		'has_archive'  => false,
+	) );
+}
+add_action( 'init', 'michaelrill_register_timeline_cpt' );
+
+/**
+ * Register Now Item custom post type.
+ */
+function michaelrill_register_now_cpt() {
+	register_post_type( 'now_item', array(
+		'labels' => array(
+			'name'               => 'Now Items',
+			'singular_name'      => 'Now Item',
+			'add_new'            => 'Add New Item',
+			'add_new_item'       => 'Add New Now Item',
+			'edit_item'          => 'Edit Now Item',
+			'new_item'           => 'New Now Item',
+			'view_item'          => 'View Now Item',
+			'search_items'       => 'Search Now Items',
+			'not_found'          => 'No now items found',
+			'not_found_in_trash' => 'No now items found in trash',
+		),
+		'public'       => false,
+		'show_ui'      => true,
+		'show_in_menu' => true,
+		'menu_icon'    => 'dashicons-clock',
+		'supports'     => array( 'title', 'editor' ),
+		'has_archive'  => false,
+	) );
+}
+add_action( 'init', 'michaelrill_register_now_cpt' );
+
+/**
+ * Add meta boxes for Timeline Entry fields.
+ */
+function michaelrill_timeline_meta_boxes() {
+	add_meta_box(
+		'timeline_details',
+		'Timeline Details',
+		'michaelrill_timeline_meta_box_html',
+		'timeline_entry',
+		'side'
+	);
+}
+add_action( 'add_meta_boxes', 'michaelrill_timeline_meta_boxes' );
+
+function michaelrill_timeline_meta_box_html( $post ) {
+	$date_range = get_post_meta( $post->ID, '_timeline_date_range', true );
+	$order      = get_post_meta( $post->ID, '_timeline_order', true );
+	wp_nonce_field( 'michaelrill_timeline_meta', 'michaelrill_timeline_nonce' );
+	?>
+	<p>
+		<label for="timeline_date_range"><strong>Date Range</strong></label><br>
+		<input type="text" id="timeline_date_range" name="timeline_date_range" value="<?php echo esc_attr( $date_range ); ?>" style="width:100%;" placeholder="e.g. 2017 – present">
+	</p>
+	<p>
+		<label for="timeline_order"><strong>Sort Order</strong></label><br>
+		<input type="number" id="timeline_order" name="timeline_order" value="<?php echo esc_attr( $order ); ?>" style="width:100%;" placeholder="1 = first">
+		<br><small>Lower numbers appear first.</small>
+	</p>
+	<?php
+}
+
+/**
+ * Save Timeline Entry meta.
+ */
+function michaelrill_save_timeline_meta( $post_id ) {
+	if ( ! isset( $_POST['michaelrill_timeline_nonce'] ) || ! wp_verify_nonce( $_POST['michaelrill_timeline_nonce'], 'michaelrill_timeline_meta' ) ) {
+		return;
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	if ( isset( $_POST['timeline_date_range'] ) ) {
+		update_post_meta( $post_id, '_timeline_date_range', sanitize_text_field( $_POST['timeline_date_range'] ) );
+	}
+	if ( isset( $_POST['timeline_order'] ) ) {
+		update_post_meta( $post_id, '_timeline_order', intval( $_POST['timeline_order'] ) );
+	}
+}
+add_action( 'save_post_timeline_entry', 'michaelrill_save_timeline_meta' );
+
+/**
+ * Add meta box for Now Item sort order.
+ */
+function michaelrill_now_meta_boxes() {
+	add_meta_box(
+		'now_details',
+		'Now Item Details',
+		'michaelrill_now_meta_box_html',
+		'now_item',
+		'side'
+	);
+}
+add_action( 'add_meta_boxes', 'michaelrill_now_meta_boxes' );
+
+function michaelrill_now_meta_box_html( $post ) {
+	$order = get_post_meta( $post->ID, '_now_order', true );
+	wp_nonce_field( 'michaelrill_now_meta', 'michaelrill_now_nonce' );
+	?>
+	<p>
+		<label for="now_order"><strong>Sort Order</strong></label><br>
+		<input type="number" id="now_order" name="now_order" value="<?php echo esc_attr( $order ); ?>" style="width:100%;" placeholder="1 = first">
+		<br><small>Lower numbers appear first. The post title becomes the left-column label (e.g. "Working on").</small>
+	</p>
+	<?php
+}
+
+/**
+ * Save Now Item meta.
+ */
+function michaelrill_save_now_meta( $post_id ) {
+	if ( ! isset( $_POST['michaelrill_now_nonce'] ) || ! wp_verify_nonce( $_POST['michaelrill_now_nonce'], 'michaelrill_now_meta' ) ) {
+		return;
+	}
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+	if ( isset( $_POST['now_order'] ) ) {
+		update_post_meta( $post_id, '_now_order', intval( $_POST['now_order'] ) );
+	}
+}
+add_action( 'save_post_now_item', 'michaelrill_save_now_meta' );

@@ -6,7 +6,7 @@ The short answer: further than I expected.
 
 ## Why rebuild at all
 
-Back in 2005, I came across Eric Meyer's website and fell in love with the layout: metadata in a narrow left column, main content on the right. Simple, typographic, structured. He's since moved on to different designs, but that two-column idea never left my head.
+Back in 2005, I came across [Eric Meyer's website](https://meyerweb.com/) and fell in love with the layout: metadata in a narrow left column, main content on the right. Simple, typographic, structured. He's since moved on to different designs, but that two-column idea never left my head.
 
 I've tried to recreate it more times than I'd like to admit. Existing WordPress themes. Tweaking those themes. Building from scratch in the block editor. You name it, I've tried it. But I never fully dug into the details of CSS or the intricacies of the WordPress block editor, and every attempt fell short. They always looked half-baked — lots of big and little kinks in the design that never quite aligned. Over the years I learned to live with it.
 
@@ -20,7 +20,7 @@ I didn't hand over a spec and wait. This was iterative, sometimes messy, always 
 
 Some sessions were focused: implement dark mode. Others were exploratory: "do you have ideas for how to improve the site?" Claude would suggest a handful of things — a 404 page with personality, reading time estimates, a Now page — and I'd pick the ones that resonated.
 
-The back-and-forth felt more like working with a sharp junior developer who happens to have perfect recall than like using a tool. I'd push back, Claude would adjust. I'd share screenshots of rendering bugs, Claude would dig into the markup. We went through probably a dozen rounds on the Bigfoot footnote styling alone.
+The back-and-forth felt more like working with a sharp junior developer who happens to have perfect recall than like using a tool. I'd push back, Claude would adjust. I'd share screenshots of rendering bugs, Claude would dig into the markup. We went through probably a dozen rounds on the [Bigfoot footnote](https://bigfootjs.com/) styling alone.
 
 ## What we built
 
@@ -30,7 +30,7 @@ The theme is a classic WordPress theme built on that two-column grid I'd been ch
 
 **Dark mode** was one of the bigger lifts. It detects your OS preference, falls back to time-based switching (dark after 8pm, light after 7am), and lets you override with a toggle. There's an inline script in the `<head>` that sets the theme before the page renders, so you never get a flash of the wrong mode. The toggle itself went through a few iterations — I started with text glyphs for the sun and moon icons, but they rendered differently across browsers. We ended up with inline SVGs for consistency.
 
-**The About page** uses a timeline layout for my career history — each entry has a date range and company name in the left column and the description on the right. The **Now page** applies the same structure to what I'm currently working on, reading, thinking about. Both are backed by custom post types, so I can edit everything from the WordPress admin without touching a template file.
+**The About page** uses a timeline layout for my career history — each entry has a date range and company name in the left column and the description on the right. The **Now page** — inspired by [Derek Sivers' /now page movement](https://sive.rs/nowff) — applies the same structure to what I'm currently working on, reading, thinking about. Both are backed by custom post types, so I can edit everything from the WordPress admin without touching a template file.
 
 That wasn't the case initially. Claude's first version hardcoded all the content directly in the PHP templates, which is fine for a prototype but defeats the purpose of having a CMS. When I flagged it, Claude refactored both pages into custom post types — Timeline Entries and Now Items — with meta boxes for date ranges and sort order. Then it generated WordPress XML import files pre-populated with all the existing content. I imported them via Tools → Import → WordPress and had a fully editable site in seconds. That XML approach was one of my favorite parts of the entire process.
 
@@ -62,6 +62,6 @@ That continuity turned what could have been a frustrating exercise in repeating 
 
 ## Would I do it again
 
-Already am. The site you're reading this on is the result, and I'm still tweaking it. That's the thing about building something yourself, even with help — you end up caring about the details in a way you never would with an off-the-shelf theme.
+Already am. The site you're reading this on is the result, and I'm still tweaking it. That's the thing about building something yourself, even with help — you end up caring about the details in a way you never would with an off-the-shelf theme. It also happens to be the whole point of the [IndieWeb](https://indieweb.org/): owning your domain, publishing on your own site, and keeping your content where you control it.
 
 Einfach machen.

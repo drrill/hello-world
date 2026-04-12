@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.8.0
+Version: 1.8.1
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -838,7 +838,10 @@ blockquote cite,
   padding: 0.35rem 0;
 }
 
-.page-entry .entry-content ul a {
+/* Every link in the archive content area gets calm styling: no pink
+   underline, no box-shadow, plain text color. Covers post links, year
+   headings, and anything else that ships inside the page content. */
+.page-entry .entry-content a {
   border-bottom: none;
   box-shadow: none;
   color: var(--color-text);
@@ -846,24 +849,7 @@ blockquote cite,
   transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
-/* Dim siblings when hovering one link in the list (Claude-style focus reveal) */
-.page-entry .entry-content ul:hover a {
-  opacity: 0.35;
-}
-
-.page-entry .entry-content ul:hover a:hover {
-  opacity: 1;
-  color: var(--color-bg);
-  background: var(--color-accent-hover);
-}
-
-/* Fallback for non-hover contexts */
-.page-entry .entry-content ul a:hover {
-  color: var(--color-bg);
-  background: var(--color-accent-hover);
-}
-
-/* Archive year headings — no underline, even if wrapped in an anchor */
+/* Year headings — bold and slightly heavier, same hover style as posts */
 .page-entry .entry-content h2,
 .page-entry .entry-content h3 {
   text-decoration: none;
@@ -872,16 +858,18 @@ blockquote cite,
 
 .page-entry .entry-content h2 a,
 .page-entry .entry-content h3 a {
-  border-bottom: none;
-  box-shadow: none;
   color: var(--color-heading);
   font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.33, 0.66, 0.66, 1);
 }
 
-.page-entry .entry-content h2 a:hover,
-.page-entry .entry-content h3 a:hover {
+/* Dim every link across the whole archive when hovering any one link —
+   years and post titles alike dim together, the hovered one stays lit. */
+.page-entry .entry-content:hover a {
+  opacity: 0.35;
+}
+
+.page-entry .entry-content a:hover {
+  opacity: 1;
   color: var(--color-bg);
   background: var(--color-accent-hover);
 }

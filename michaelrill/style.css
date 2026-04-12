@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.7.1
+Version: 1.8.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -455,14 +455,15 @@ a:focus-visible {
   color: var(--color-text);
   appearance: none;
   -webkit-appearance: none;
-  width: 270px;
+  width: 210px;
   min-width: 120px;
-  transition: border-color 0.2s;
+  transition: width 0.25s ease, border-color 0.2s;
 }
 
 .search-field:focus {
   outline: none;
   border-color: var(--color-accent);
+  width: 320px;
 }
 
 .search-field::placeholder {
@@ -842,15 +843,35 @@ blockquote cite,
   box-shadow: none;
   color: var(--color-text);
   text-decoration: none;
+  transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 
+/* Dim siblings when hovering one link in the list (Claude-style focus reveal) */
+.page-entry .entry-content ul:hover a {
+  opacity: 0.35;
+}
+
+.page-entry .entry-content ul:hover a:hover {
+  opacity: 1;
+  color: var(--color-bg);
+  background: var(--color-accent-hover);
+}
+
+/* Fallback for non-hover contexts */
 .page-entry .entry-content ul a:hover {
   color: var(--color-bg);
   background: var(--color-accent-hover);
 }
 
-/* Archive year headings */
-.page-entry .entry-content h2 a {
+/* Archive year headings — no underline, even if wrapped in an anchor */
+.page-entry .entry-content h2,
+.page-entry .entry-content h3 {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.page-entry .entry-content h2 a,
+.page-entry .entry-content h3 a {
   border-bottom: none;
   box-shadow: none;
   color: var(--color-heading);
@@ -859,7 +880,8 @@ blockquote cite,
   transition: all 0.2s cubic-bezier(0.33, 0.66, 0.66, 1);
 }
 
-.page-entry .entry-content h2 a:hover {
+.page-entry .entry-content h2 a:hover,
+.page-entry .entry-content h3 a:hover {
   color: var(--color-bg);
   background: var(--color-accent-hover);
 }

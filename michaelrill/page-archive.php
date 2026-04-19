@@ -27,7 +27,7 @@ foreach ( $all_posts as $p ) {
 ?>
 
 <style>
-.archive-dynamic { max-width: var(--width-wide, 1340px); margin: 0 auto; }
+.archive-dynamic { max-width: 860px; margin: 0 auto; }
 .archive-dynamic__header { margin-bottom: 2rem; }
 .archive-dynamic__title { font-size: clamp(2.15rem, 3vw, 3rem); font-weight: 400; margin: 0 0 0.25rem; }
 .archive-dynamic__subtitle { font-style: italic; color: var(--color-muted, #5F5F5F); margin: 0; font-size: 1rem; }

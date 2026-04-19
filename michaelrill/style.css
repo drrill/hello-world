@@ -935,64 +935,55 @@ blockquote cite,
   margin: 0;
 }
 
-/* Three-column grid: year | title | date */
 .archive-dynamic__list {
-  display: grid;
-  grid-template-columns: 4.5rem 1fr auto;
-  gap: 0;
   border-top: 1px solid var(--color-post-border);
 }
 
 .archive-dynamic__row {
-  display: contents;
-}
-
-/* Each cell shares the same border-bottom and padding */
-.archive-dynamic__year,
-.archive-dynamic__title-link,
-.archive-dynamic__date {
-  padding: 0.5rem 0;
+  display: flex;
+  align-items: baseline;
   border-bottom: 1px solid var(--color-post-border);
-  align-self: baseline;
+  padding: 0.45rem 0;
 }
 
 .archive-dynamic__year {
+  flex-shrink: 0;
+  width: 4.5rem;
   font-size: var(--font-size-medium);
   font-weight: 700;
   color: var(--color-accent);
-  padding-right: 1rem;
 }
 
 .archive-dynamic__title-link {
-  font-size: var(--font-size-medium);
-  color: var(--color-heading);
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-post-border);
-  box-shadow: none;
+  flex: 1;
+  min-width: 0;
+  color: var(--color-heading) !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+  margin-right: 1.5rem;
   transition: color 0.15s ease;
-  padding-right: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .archive-dynamic__title-link:hover {
-  color: var(--color-accent-hover);
-  background: none;
+  color: var(--color-accent-hover) !important;
+  background: none !important;
 }
 
 .archive-dynamic__date {
+  flex-shrink: 0;
   font-size: var(--font-size-small);
   color: var(--color-muted);
   white-space: nowrap;
-  text-align: right;
 }
 
-/* Mobile: stack year into a header row above each group */
 @media (max-width: 782px) {
-  .archive-dynamic__list {
-    grid-template-columns: 1fr auto;
-  }
-
   .archive-dynamic__year {
-    display: none;
+    width: 3.5rem;
+    font-size: var(--font-size-small);
   }
 }
 

@@ -39,11 +39,11 @@ foreach ( $all_posts as $p ) {
 
 		<div class="archive-dynamic__list">
 			<?php foreach ( $by_year as $year => $posts ) : ?>
-				<?php foreach ( $posts as $index => $p ) : ?>
+				<div class="archive-dynamic__year-header">
+					<span class="archive-dynamic__year"><?php echo esc_html( $year ); ?></span>
+				</div>
+				<?php foreach ( $posts as $p ) : ?>
 					<div class="archive-dynamic__row">
-						<span class="archive-dynamic__year">
-							<?php if ( 0 === $index ) echo esc_html( $year ); ?>
-						</span>
 						<span class="archive-dynamic__post-title">
 							<a href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo get_the_title( $p ); ?></a>
 						</span>

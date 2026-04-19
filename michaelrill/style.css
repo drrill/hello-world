@@ -944,10 +944,10 @@ blockquote cite,
 
 .archive-dynamic__row {
   display: grid;
-  grid-template-columns: 100px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 0 var(--spacing-40);
   align-items: baseline;
-  padding: 0.6rem 0;
+  padding: 0.35rem 0;
   border-bottom: 1px dotted var(--color-border);
 }
 
@@ -956,11 +956,28 @@ blockquote cite,
 }
 
 .archive-dynamic__year {
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-xlarge);
   font-weight: 700;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  color: var(--color-heading);
+  min-width: 60px;
+}
+
+.archive-dynamic__year-header {
+  padding-top: 1.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.archive-dynamic__year-header:first-child {
+  padding-top: 0;
+}
+
+.archive-dynamic__year {
+  display: inline-block;
+  font-size: var(--font-size-xlarge);
+  font-weight: 700;
+  color: var(--color-heading);
 }
 
 .archive-dynamic__post-title {
@@ -972,14 +989,14 @@ blockquote cite,
 .archive-dynamic__post-title a {
   color: var(--color-heading);
   text-decoration: none;
-  border-bottom: none;
-  box-shadow: none;
-  transition: color 0.2s ease;
+  border-bottom: 2px solid var(--color-accent-hover);
+  box-shadow: inset 0 -4px 0 var(--color-accent-hover);
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .archive-dynamic__post-title a:hover {
-  color: var(--color-accent-hover);
-  background: none;
+  color: var(--color-bg);
+  background: var(--color-accent-hover);
 }
 
 .archive-dynamic__date {

@@ -3,7 +3,7 @@ Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
 Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
-Version: 1.8.4
+Version: 2.0.0
 Requires at least: 6.0
 Tested up to: 6.7
 Requires PHP: 8.0
@@ -907,6 +907,103 @@ blockquote cite,
 .about-content-column .entry-content {
   max-width: 720px;
   line-height: 1.8;
+}
+
+/* ==========================================================================
+   Dynamic Archive Page
+   ========================================================================== */
+
+.archive-dynamic {
+  max-width: var(--width-wide);
+  margin: 0 auto;
+}
+
+.archive-dynamic__header {
+  margin-bottom: var(--spacing-50);
+  padding-bottom: var(--spacing-40);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.archive-dynamic__title {
+  font-size: var(--font-size-xxlarge);
+  font-weight: 400;
+  margin: 0;
+}
+
+.archive-dynamic__subtitle {
+  font-size: var(--font-size-medium);
+  font-style: italic;
+  color: var(--color-muted);
+  margin-top: 0.5rem;
+}
+
+.archive-dynamic__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-dynamic__row {
+  display: grid;
+  grid-template-columns: 100px 1fr auto;
+  gap: 0 var(--spacing-40);
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.archive-dynamic__row:last-child {
+  border-bottom: none;
+}
+
+.archive-dynamic__year {
+  font-size: var(--font-size-small);
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.archive-dynamic__post-title {
+  font-size: var(--font-size-medium);
+  font-weight: 400;
+  min-width: 0;
+}
+
+.archive-dynamic__post-title a {
+  color: var(--color-heading);
+  text-decoration: none;
+  border-bottom: none;
+  box-shadow: none;
+  transition: color 0.2s ease;
+}
+
+.archive-dynamic__post-title a:hover {
+  color: var(--color-accent-hover);
+  background: none;
+}
+
+.archive-dynamic__date {
+  font-size: var(--font-size-small);
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+@media (max-width: 782px) {
+  .archive-dynamic__row {
+    grid-template-columns: 1fr auto;
+    gap: 0 var(--spacing-20);
+  }
+
+  .archive-dynamic__year {
+    grid-column: 1 / -1;
+    padding-top: 1rem;
+    padding-bottom: 0.25rem;
+    border-bottom: none;
+  }
+
+  .archive-dynamic__year:empty {
+    display: none;
+  }
 }
 
 /* ==========================================================================

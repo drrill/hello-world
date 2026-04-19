@@ -920,105 +920,78 @@ blockquote cite,
 
 .archive-dynamic__header {
   margin-bottom: var(--spacing-50);
-  padding-bottom: var(--spacing-40);
-  border-bottom: 2px solid var(--color-accent);
 }
 
 .archive-dynamic__title {
   font-size: var(--font-size-xxlarge);
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 0.25rem;
 }
 
 .archive-dynamic__subtitle {
   font-size: var(--font-size-medium);
   font-style: italic;
   color: var(--color-muted);
-  margin-top: 0.5rem;
+  margin: 0;
 }
 
+/* Three-column grid: year | title | date */
 .archive-dynamic__list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  gap: 0;
+  border-top: 1px solid var(--color-post-border);
 }
 
 .archive-dynamic__row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0 var(--spacing-40);
-  align-items: baseline;
-  padding: 0.35rem 0;
-  border-bottom: 1px dotted var(--color-border);
+  display: contents;
 }
 
-.archive-dynamic__row:last-child {
-  border-bottom: none;
-}
-
-.archive-dynamic__year {
-  font-size: var(--font-size-xlarge);
-  font-weight: 700;
-  color: var(--color-heading);
-  min-width: 60px;
-}
-
-.archive-dynamic__year-header {
-  padding-top: 1.5rem;
-  padding-bottom: 0.75rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-accent);
-}
-
-.archive-dynamic__year-header:first-child {
-  padding-top: 0;
+/* Each cell shares the same border-bottom and padding */
+.archive-dynamic__year,
+.archive-dynamic__title-link,
+.archive-dynamic__date {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-post-border);
+  align-self: baseline;
 }
 
 .archive-dynamic__year {
-  display: inline-block;
-  font-size: var(--font-size-xlarge);
-  font-weight: 700;
-  color: var(--color-heading);
-}
-
-.archive-dynamic__post-title {
   font-size: var(--font-size-medium);
-  font-weight: 400;
-  min-width: 0;
+  font-weight: 700;
+  color: var(--color-accent);
+  padding-right: 1rem;
 }
 
-.archive-dynamic__post-title a {
+.archive-dynamic__title-link {
+  font-size: var(--font-size-medium);
   color: var(--color-heading);
   text-decoration: none;
-  border-bottom: 2px solid var(--color-accent-hover);
-  box-shadow: inset 0 -4px 0 var(--color-accent-hover);
-  transition: color 0.2s ease, background 0.2s ease;
+  border-bottom: 1px solid var(--color-post-border);
+  box-shadow: none;
+  transition: color 0.15s ease;
+  padding-right: 1rem;
 }
 
-.archive-dynamic__post-title a:hover {
-  color: var(--color-bg);
-  background: var(--color-accent-hover);
+.archive-dynamic__title-link:hover {
+  color: var(--color-accent-hover);
+  background: none;
 }
 
 .archive-dynamic__date {
   font-size: var(--font-size-small);
   color: var(--color-muted);
   white-space: nowrap;
+  text-align: right;
 }
 
+/* Mobile: stack year into a header row above each group */
 @media (max-width: 782px) {
-  .archive-dynamic__row {
+  .archive-dynamic__list {
     grid-template-columns: 1fr auto;
-    gap: 0 var(--spacing-20);
   }
 
   .archive-dynamic__year {
-    grid-column: 1 / -1;
-    padding-top: 1rem;
-    padding-bottom: 0.25rem;
-    border-bottom: none;
-  }
-
-  .archive-dynamic__year:empty {
     display: none;
   }
 }

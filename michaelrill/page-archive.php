@@ -61,7 +61,7 @@ $category_meta['all'] = array(
 	'subtitle' => sprintf( 'All %s posts, in reverse order.', number_format_i18n( $total ) ),
 );
 foreach ( $all_categories as $slug => $name ) {
-	$desc = wp_strip_all_tags( trim( $category_descriptions[ $slug ] ?? '' ) );
+	$desc = html_entity_decode( wp_strip_all_tags( trim( $category_descriptions[ $slug ] ?? '' ) ), ENT_QUOTES, 'UTF-8' );
 	$count = $category_counts[ $slug ] ?? 0;
 	$fallback = sprintf( '%s %s in this category.', number_format_i18n( $count ), _n( 'post', 'posts', $count, 'michaelrill' ) );
 	$category_meta[ $slug ] = array(

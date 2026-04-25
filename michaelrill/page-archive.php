@@ -22,22 +22,25 @@ $all_posts = get_posts( array(
 // Build post data with categories
 $posts_with_categories = array();
 $all_categories = array();
+$category_descriptions = array();
+$category_counts = array();
 
 foreach ( $all_posts as $p ) {
 	$categories = get_the_category( $p->ID );
 	$cat_slugs = array();
-	$cat_names = array();
 
 	foreach ( $categories as $cat ) {
 		$cat_slugs[] = esc_attr( $cat->slug );
-		$cat_names[] = esc_html( $cat->name );
 		$all_categories[ $cat->slug ] = $cat->name;
+		if ( ! isset( $category_descriptions[ $cat->slug ] ) ) {
+			$category_descriptions[ $cat->slug ] = category_description( $cat->term_id );
+		}
+		$category_counts[ $cat->slug ] = ( $category_counts[ $cat->slug ] ?? 0 ) + 1;
 	}
 
 	$posts_with_categories[ $p->ID ] = array(
 		'post' => $p,
 		'category_slugs' => $cat_slugs,
-		'category_names' => $cat_names,
 	);
 }
 
@@ -50,15 +53,28 @@ foreach ( $all_posts as $p ) {
 }
 
 // Sort categories by name for consistent display
-ksort( $all_categories );
 asort( $all_categories );
+
+// Build JSON data for JS
+$category_meta = array();
+$category_meta['all'] = array(
+	'subtitle' => sprintf( 'All %s posts, in reverse order.', number_format_i18n( $total ) ),
+);
+foreach ( $all_categories as $slug => $name ) {
+	$desc = wp_strip_all_tags( trim( $category_descriptions[ $slug ] ?? '' ) );
+	$count = $category_counts[ $slug ] ?? 0;
+	$fallback = sprintf( '%s %s in this category.', number_format_i18n( $count ), _n( 'post', 'posts', $count, 'michaelrill' ) );
+	$category_meta[ $slug ] = array(
+		'subtitle' => $desc ? $desc : $fallback,
+	);
+}
 ?>
 
 <style>
 .archive-dynamic { max-width: 860px; margin: 0 auto; }
 .archive-dynamic__header { margin-bottom: 2rem; }
 .archive-dynamic__title { font-size: clamp(2.15rem, 3vw, 3rem); font-weight: 400; margin: 0 0 0.25rem; }
-.archive-dynamic__subtitle { font-style: italic; color: var(--color-muted, #5F5F5F); margin: 0; font-size: 1rem; }
+.archive-dynamic__subtitle { font-style: italic; color: var(--color-muted, #5F5F5F); margin: 0; font-size: 1rem; transition: opacity 0.2s ease; }
 .archive-dynamic__filters { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .archive-dynamic__filter-pill {
   font-family: inherit;
@@ -117,8 +133,8 @@ asort( $all_categories );
 					$post_data = $posts_with_categories[ $p->ID ];
 					$category_data = ! empty( $post_data['category_slugs'] ) ? implode( ' ', $post_data['category_slugs'] ) : '';
 					?>
-					<div class="archive-dynamic__row" data-categories="<?php echo esc_attr( $category_data ); ?>">
-						<span class="archive-dynamic__year"><?php if ( 0 === $i ) echo esc_html( $year ); ?></span>
+					<div class="archive-dynamic__row" data-categories="<?php echo esc_attr( $category_data ); ?>" data-year="<?php echo esc_attr( $year ); ?>">
+						<span class="archive-dynamic__year"></span>
 						<a class="archive-dynamic__title-link" href="<?php echo esc_url( get_permalink( $p ) ); ?>"><?php echo esc_html( get_the_title( $p ) ); ?></a>
 						<span class="archive-dynamic__date"><?php echo esc_html( get_the_date( 'M j', $p ) ); ?></span>
 					</div>
@@ -131,30 +147,56 @@ asort( $all_categories );
 
 <script>
 document.addEventListener( 'DOMContentLoaded', function() {
-	const filterButtons = document.querySelectorAll( '.archive-dynamic__filter-pill' );
-	const rows = document.querySelectorAll( '.archive-dynamic__row' );
+	var categoryMeta = <?php echo wp_json_encode( $category_meta ); ?>;
+	var filterButtons = document.querySelectorAll( '.archive-dynamic__filter-pill' );
+	var rows = document.querySelectorAll( '.archive-dynamic__row' );
+	var subtitle = document.querySelector( '.archive-dynamic__subtitle' );
 
-	filterButtons.forEach( button => {
+	function updateYearLabels() {
+		var seen = {};
+		rows.forEach( function( row ) {
+			var yearEl = row.querySelector( '.archive-dynamic__year' );
+			var year = row.getAttribute( 'data-year' );
+			if ( row.classList.contains( 'hidden' ) ) {
+				yearEl.textContent = '';
+				return;
+			}
+			if ( ! seen[ year ] ) {
+				yearEl.textContent = year;
+				seen[ year ] = true;
+			} else {
+				yearEl.textContent = '';
+			}
+		} );
+	}
+
+	updateYearLabels();
+
+	filterButtons.forEach( function( button ) {
 		button.addEventListener( 'click', function() {
-			const selectedCategory = this.getAttribute( 'data-category' );
+			var selectedCategory = this.getAttribute( 'data-category' );
 
-			// Update active state
-			filterButtons.forEach( btn => btn.classList.remove( 'active' ) );
+			filterButtons.forEach( function( btn ) { btn.classList.remove( 'active' ); } );
 			this.classList.add( 'active' );
 
-			// Filter rows
-			rows.forEach( row => {
+			rows.forEach( function( row ) {
 				if ( selectedCategory === 'all' ) {
 					row.classList.remove( 'hidden' );
 				} else {
-					const rowCategories = row.getAttribute( 'data-categories' ).split( ' ' );
-					if ( rowCategories.includes( selectedCategory ) ) {
+					var rowCategories = row.getAttribute( 'data-categories' ).split( ' ' );
+					if ( rowCategories.indexOf( selectedCategory ) !== -1 ) {
 						row.classList.remove( 'hidden' );
 					} else {
 						row.classList.add( 'hidden' );
 					}
 				}
 			} );
+
+			updateYearLabels();
+
+			if ( categoryMeta[ selectedCategory ] ) {
+				subtitle.textContent = categoryMeta[ selectedCategory ].subtitle;
+			}
 		} );
 	} );
 } );

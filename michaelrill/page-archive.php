@@ -85,7 +85,7 @@ foreach ( $all_categories as $slug => $name ) {
   background: transparent;
   color: var(--color-text, #3B3B3B);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   appearance: none;
   -webkit-appearance: none;
   flex-shrink: 0;

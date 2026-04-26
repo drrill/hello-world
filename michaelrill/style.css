@@ -543,17 +543,21 @@ a:focus-visible {
   text-decoration: underline;
 }
 
-.entry-edit-link,
-.entry-edit-link:visited {
+a.entry-edit-link,
+a.entry-edit-link:visited {
   display: inline-block;
   margin-top: 0.5rem;
   font-size: var(--font-size-small);
   color: var(--color-muted);
   text-decoration: none;
+  text-decoration-thickness: 0;
+  border: none;
+  box-shadow: none;
 }
 
-.entry-edit-link:hover {
+a.entry-edit-link:hover {
   color: var(--color-accent);
+  text-decoration: none;
 }
 
 .entry-content-column {

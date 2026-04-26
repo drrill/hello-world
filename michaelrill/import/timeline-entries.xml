@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+	<title>Michael Rill</title>
+	<link>https://michaelrill.xyz</link>
+	<description>Timeline Entries Import</description>
+	<wp:wxr_version>1.2</wp:wxr_version>
+
+	<!-- 1. Microsoft -->
+	<item>
+		<title>Microsoft</title>
+		<dc:creator><![CDATA[michael]]></dc:creator>
+		<content:encoded><![CDATA[<p>I joined Microsoft first as part of the Corporate Strategy team, working on growth strategies such as industry verticals, voice and video communications in Teams, Azure Communication Services and Azure Confidential Compute. After that I worked on incubation efforts within Microsoft Teams, exploring new product directions and driving cross-functional strategy during an early chapter of what became one of Microsoft's most strategically important products.</p>
+<p>From there I moved into strategy and planning for Microsoft Office, leading product direction for initiatives, working with Objectives and Key Results across the organization, and helping set the long-term course for one of Microsoft's most used product families.</p>
+<p>Today I lead Technical Program Management within the Office AI team, driving strategic initiatives to enhance AI capabilities across Office applications. Some of my areas include establishing an Office-wide Eval System and managing our fleet of GPUs to support the roll out of critical Copilot features in Office. My role involves orchestrating cross-functional teams, aligning product roadmaps with business goals, and making sure the engineering and strategy sides of the organization are moving in the same direction.</p>]]></content:encoded>
+		<wp:post_type><![CDATA[timeline_entry]]></wp:post_type>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_date_range]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2017 – present]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- 2. Telstra -->
+	<item>
+		<title>Telstra</title>
+		<dc:creator><![CDATA[michael]]></dc:creator>
+		<content:encoded><![CDATA[<p>I started at Telstra working for the CFO as part of the Corporate Strategy team. I developed strategic initiatives at the corporate level, complex strategic issues, talent management, and connecting financial strategy to business direction. It was my first real taste of how a large enterprise thinks about its own future.</p>
+<p>That led to running strategy and program management for Telstra's Software Group, where I was responsible for the strategic direction and development of a portfolio of products. I drove the strategy and integration of a number of software acquisitions in the Bay Area, Europe and Asia. It was the step that moved me from advising on strategy to owning the execution of it.</p>]]></content:encoded>
+		<wp:post_type><![CDATA[timeline_entry]]></wp:post_type>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_date_range]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2013 – 2017]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- 3. Bain & Company -->
+	<item>
+		<title>Bain &amp; Company</title>
+		<dc:creator><![CDATA[michael]]></dc:creator>
+		<content:encoded><![CDATA[<p>I spent several years at Bain as a management consultant, leading case teams across telecom, private equity, and financial services engagements in Germany, the UK, the US, and Australia. Consulting gave me a structured way of thinking about strategy and organizations, and working across industries and geographies early in my career was a formative experience I draw on constantly.</p>]]></content:encoded>
+		<wp:post_type><![CDATA[timeline_entry]]></wp:post_type>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_date_range]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2007 – 2012]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- 4. University of Regensburg -->
+	<item>
+		<title>University of Regensburg</title>
+		<dc:creator><![CDATA[michael]]></dc:creator>
+		<content:encoded><![CDATA[<p>I completed my doctorate in Business Information Technology. My thesis examined the design of online customer interaction — how banks and financial institutions could rethink their digital touchpoints for the internet age. It was an early look at what would become a defining shift in how businesses relate to their customers.</p>]]></content:encoded>
+		<wp:post_type><![CDATA[timeline_entry]]></wp:post_type>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_date_range]]></wp:meta_key>
+			<wp:meta_value><![CDATA[– 2006]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[4]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+	<!-- 5. Web Developer -->
+	<item>
+		<title>Web Developer · London</title>
+		<dc:creator><![CDATA[michael]]></dc:creator>
+		<content:encoded><![CDATA[<p>Before strategy and consulting, I built things. I worked as a web developer in London, responsible for design, implementation, and maintaining the global IT infrastructure of the organizations I worked with. Getting my hands dirty in code early on gave me a technical foundation that still makes me a more useful person in conversations about software and product.</p>]]></content:encoded>
+		<wp:post_type><![CDATA[timeline_entry]]></wp:post_type>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_date_range]]></wp:meta_key>
+			<wp:meta_value><![CDATA[Early 2000s]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_timeline_order]]></wp:meta_key>
+			<wp:meta_value><![CDATA[5]]></wp:meta_value>
+		</wp:postmeta>
+	</item>
+
+</channel>
+</rss>

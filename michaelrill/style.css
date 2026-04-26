@@ -2,7 +2,7 @@
 Theme Name: Michael Rill
 Theme URI: https://michaelrill.xyz
 Author: Michael Rill
-Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout, aside post format support.
+Description: A minimal classic WordPress theme for michaelrill.xyz. Manrope typography, two-column post layout.
 Version: 2.2.0
 Requires at least: 6.0
 Tested up to: 6.7
@@ -511,7 +511,7 @@ a:focus-visible {
 }
 
 .entry-meta-column {
-  /* Left column: title + date for standard, empty for asides */
+  /* Left column: title + date + meta */
 }
 
 .entry-meta-column .entry-title {
@@ -543,9 +543,28 @@ a:focus-visible {
   text-decoration: underline;
 }
 
+.entry-edit-link,
+.entry-edit-link:visited {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: var(--font-size-small);
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+.entry-edit-link:hover {
+  color: var(--color-accent);
+}
+
 .entry-content-column {
   /* Right column: post content */
   min-width: 0; /* prevent grid blowout */
+}
+
+.entry-content strong,
+.entry-content b {
+  font-weight: 600;
+  color: var(--color-heading);
 }
 
 /* Improved body text readability */
@@ -562,49 +581,6 @@ a:focus-visible {
   border: none;
   border-top: 1px solid var(--color-border-subtle);
   margin-top: 2rem;
-}
-
-/* ==========================================================================
-   Post Format: Aside
-   ========================================================================== */
-
-.format-aside .entry-content,
-.format-aside .entry-content p {
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: var(--color-aside-text);
-}
-
-.format-aside .entry-content a,
-.format-aside .entry-content a:visited {
-  border-bottom: 2px solid var(--color-accent-hover);
-  box-shadow: inset 0 -4px 0 var(--color-accent-hover);
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.2s cubic-bezier(0.33, 0.66, 0.66, 1), background 0.2s cubic-bezier(0.33, 0.66, 0.66, 1);
-}
-
-.format-aside .entry-content a:hover {
-  color: var(--color-bg);
-  background: var(--color-accent-hover);
-}
-
-.aside-permalink {
-  margin-top: 0.75rem;
-}
-
-.aside-permalink a,
-.aside-permalink a:visited {
-  color: var(--color-muted);
-  text-decoration: none;
-  font-size: 0.85rem;
-  opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-
-.aside-permalink a:hover {
-  opacity: 1;
-  color: var(--color-accent);
 }
 
 /* ==========================================================================
@@ -665,42 +641,11 @@ blockquote cite,
   opacity: 0.3;
 }
 
-/* Aside blockquotes — simpler, grey border */
-.format-aside blockquote,
-.format-aside .wp-block-quote {
-  border-left: 2px solid var(--color-aside-quote-border) !important;
-  background: transparent !important;
-  padding: 1.25rem 2rem !important;
-  margin: 1.5rem 0 !important;
-  font-style: italic;
-  color: var(--color-blockquote-text);
-  font-size: 1.1rem !important;
-}
-
-.format-aside blockquote::before,
-.format-aside .wp-block-quote::before {
-  content: none;
-}
-
-.format-aside blockquote p,
-.format-aside .wp-block-quote p {
-  font-size: 1.1rem !important;
-  color: var(--color-blockquote-text);
-}
-
 /* Category page blockquote margin fixes */
 .category .entry-content blockquote,
 .category .entry-content .wp-block-quote {
   margin-left: 0;
   margin-right: 0;
-  max-width: 100%;
-}
-
-.category-asides .format-aside blockquote,
-.category-asides .format-aside .wp-block-quote {
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 2rem;
   max-width: 100%;
 }
 
@@ -1547,11 +1492,6 @@ figcaption {
 
   .timeline-heading-column {
     margin-bottom: var(--spacing-50);
-  }
-
-  /* Hide empty aside meta column on mobile */
-  .format-aside .entry-meta-column {
-    display: none;
   }
 }
 

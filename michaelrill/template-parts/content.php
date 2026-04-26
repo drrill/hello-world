@@ -16,6 +16,7 @@
 		</h2>
 		<?php michaelrill_posted_on(); ?>
 		<?php michaelrill_reading_time(); ?>
+		<?php michaelrill_edit_link(); ?>
 	</div>
 
 	<div class="entry-content-column">

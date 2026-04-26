@@ -113,6 +113,16 @@ add_action( 'wp_enqueue_scripts', 'michaelrill_fonts' );
 add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
 
 /**
+ * Output an edit link if the current user can edit the post.
+ */
+function michaelrill_edit_link() {
+	if ( ! current_user_can( 'edit_post', get_the_ID() ) ) {
+		return;
+	}
+	echo '<a class="entry-edit-link" href="' . esc_url( get_edit_post_link() ) . '">Edit</a>';
+}
+
+/**
  * Output the post date in a consistent format.
  */
 function michaelrill_posted_on() {

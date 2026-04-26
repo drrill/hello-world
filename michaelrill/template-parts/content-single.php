@@ -3,7 +3,6 @@
  * Template part for displaying a single post.
  *
  * Two-column layout matching the feed: title + date + meta in left, content in right.
- * For asides: left column is empty.
  *
  * @package MichaelRill
  */
@@ -23,6 +22,7 @@
 		<?php michaelrill_reading_time(); ?>
 		<?php michaelrill_post_categories(); ?>
 		<?php michaelrill_post_tags(); ?>
+		<?php michaelrill_edit_link(); ?>
 	</div>
 
 	<div class="single-content-column">

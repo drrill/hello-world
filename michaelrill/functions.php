@@ -102,6 +102,35 @@ function michaelrill_fonts() {
 			font-display: fallback;
 			src: url('{$font_url}FiraCode-VariableFont_wght.woff2') format('woff2');
 		}
+
+		.entry-content strong,
+		.entry-content b {
+			font-weight: 700;
+			color: var(--color-heading);
+		}
+
+		.format-aside .entry-content,
+		.format-aside .entry-content p {
+			font-size: inherit;
+			font-weight: inherit;
+			color: inherit;
+		}
+
+		a.entry-edit-link,
+		a.entry-edit-link:visited {
+			display: inline-block;
+			margin-top: 0.5rem;
+			font-size: 0.8rem;
+			color: var(--color-muted, #5F5F5F);
+			text-decoration: none !important;
+			text-decoration-thickness: 0 !important;
+			border: none !important;
+			box-shadow: none !important;
+		}
+		a.entry-edit-link:hover {
+			color: var(--color-accent, #e91e63);
+			text-decoration: none !important;
+		}
 	";
 	wp_add_inline_style( 'michaelrill-style', $css );
 }

@@ -1,0 +1,34 @@
+<?php
+/**
+ * Template part for displaying a single post.
+ *
+ * Two-column layout matching the feed: title + date + meta in left, content in right.
+ *
+ * @package MichaelRill
+ */
+?>
+
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post-entry' ); ?>>
+
+	<?php if ( has_post_thumbnail() ) : ?>
+		<div class="single-featured-image">
+			<?php the_post_thumbnail( 'large' ); ?>
+		</div>
+	<?php endif; ?>
+
+	<div class="single-meta-column">
+		<h1 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+		<?php michaelrill_posted_on(); ?>
+		<?php michaelrill_reading_time(); ?>
+		<?php michaelrill_post_categories(); ?>
+		<?php michaelrill_post_tags(); ?>
+		<?php michaelrill_edit_link(); ?>
+	</div>
+
+	<div class="single-content-column">
+		<div class="entry-content">
+			<?php the_content(); ?>
+		</div>
+	</div>
+
+</article>
